@@ -1,9 +1,11 @@
+import { useContext, useEffect } from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
 
 import { API } from '../commons'
 import character, { CharactersList } from './api/character'
 import Characters from '../components/Characters'
+import { Context } from '../components/Provider'
 
 const StyledCharactersContainer = styled.div`
   display: grid;
@@ -16,10 +18,15 @@ interface HomeProps {
 }
 
 const Home = (props: HomeProps) => {
-  const { data: { results } } = props
-  
+  const { data } = props
+  const { setCharacterState, characterState } = useContext(Context)
+
+  useEffect(() => {
+    setCharacterState(data)
+  }, [])
+
   const characters = () => {
-    return results.map(character => (<Characters character={character} />)) 
+    return characterState.map(character => (<Characters key={character.id} character={character} />)) 
   }
 
   return (

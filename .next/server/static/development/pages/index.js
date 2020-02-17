@@ -212,6 +212,101 @@ const Characters = props => {
 
 /***/ }),
 
+/***/ "./components/Provider/index.tsx":
+/*!***************************************!*\
+  !*** ./components/Provider/index.tsx ***!
+  \***************************************/
+/*! exports provided: Context, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Context", function() { return Context; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "axios");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+var _jsxFileName = "/Users/juan.marval/projects/nextjs/rick-and-morty/components/Provider/index.tsx";
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+const initialState = {
+  paginationState: {
+    count: 0,
+    pages: 0,
+    next: '',
+    prev: ''
+  },
+  characterState: [],
+  setCharacterState: () => {},
+  goToPage: () => {}
+};
+const Context = Object(react__WEBPACK_IMPORTED_MODULE_0__["createContext"])(initialState);
+
+const ProviderComponent = props => {
+  const {
+    children
+  } = props;
+  const {
+    0: state,
+    1: setState
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
+    paginationState: initialState.paginationState,
+    characterState: initialState.characterState
+  });
+
+  const setCharacterState = ({
+    info,
+    results
+  }) => {
+    setState(_objectSpread({}, state, {
+      paginationState: info,
+      characterState: results
+    }));
+  };
+
+  const goToPage = async url => {
+    try {
+      const {
+        data
+      } = await axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url);
+      setCharacterState(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const {
+    characterState,
+    paginationState
+  } = state;
+  return __jsx(Context.Provider, {
+    value: {
+      paginationState,
+      characterState,
+      setCharacterState,
+      goToPage
+    },
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 48
+    },
+    __self: undefined
+  }, children);
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (ProviderComponent);
+
+/***/ }),
+
 /***/ "./pages/index.tsx":
 /*!*************************!*\
   !*** ./pages/index.tsx ***!
@@ -229,9 +324,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _commons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../commons */ "./commons/index.ts");
 /* harmony import */ var _components_Characters__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/Characters */ "./components/Characters/index.tsx");
+/* harmony import */ var _components_Provider__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/Provider */ "./components/Provider/index.tsx");
 var _jsxFileName = "/Users/juan.marval/projects/nextjs/rick-and-morty/pages/index.tsx";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
 
 
 
@@ -244,17 +342,23 @@ const StyledCharactersContainer = styled_components__WEBPACK_IMPORTED_MODULE_2__
 
 const Home = props => {
   const {
-    data: {
-      results
-    }
+    data
   } = props;
+  const {
+    setCharacterState,
+    characterState
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_components_Provider__WEBPACK_IMPORTED_MODULE_5__["Context"]);
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+    setCharacterState(data);
+  }, []);
 
   const characters = () => {
-    return results.map(character => __jsx(_components_Characters__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    return characterState.map(character => __jsx(_components_Characters__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      key: character.id,
       character: character,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 22
+        lineNumber: 29
       },
       __self: undefined
     }));
@@ -263,13 +367,13 @@ const Home = props => {
   return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx("h1", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 27
+      lineNumber: 34
     },
     __self: undefined
   }, "Rick and Morty characters"), __jsx(StyledCharactersContainer, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 28
+      lineNumber: 35
     },
     __self: undefined
   }, characters()));

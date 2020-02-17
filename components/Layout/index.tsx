@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import Footer from './Footer'
 import Header from './Header'
 import Main  from './Main'
+import ProviderComponent from '../Provider'
 
 const StyledLayout = styled.div`
 min-height: 100vh;
@@ -18,13 +19,15 @@ grid-template-rows: 50px 1fr 50px;
 const Layout = (props: PropsWithChildren<{}>) => {
   const { children } = props
     return (
-      <StyledLayout>
-        <Header />
-        <Main>
-          {children}
-        </Main>
-        <Footer />
-      </StyledLayout>
+      <ProviderComponent>
+        <StyledLayout>
+          <Header />
+          <Main>
+            {children}
+          </Main>
+          <Footer />
+        </StyledLayout>
+      </ProviderComponent>
     )
 }
 

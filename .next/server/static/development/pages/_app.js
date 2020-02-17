@@ -106,29 +106,55 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "styled-components");
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _Provider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Provider */ "./components/Provider/index.tsx");
 var _jsxFileName = "/Users/juan.marval/projects/nextjs/rick-and-morty/components/Layout/Footer.tsx";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
-const StyledFooter = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div.withConfig({
+
+
+const StyledFooter = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.footer.withConfig({
   displayName: "Footer__StyledFooter",
   componentId: "riqzc4-0"
-})(["display:flex;background-color:gray;grid-area:footer"]);
+})(["display:flex;background-color:gray;grid-area:footer;justify-content:space-between;"]);
 
 const Footer = () => {
+  const {
+    paginationState,
+    goToPage
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_Provider__WEBPACK_IMPORTED_MODULE_2__["Context"]);
+
+  const hanlderGotoPage = url => () => {
+    goToPage(url);
+  };
+
   return __jsx(StyledFooter, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 11
+      lineNumber: 20
     },
     __self: undefined
-  }, __jsx("span", {
+  }, paginationState.prev && __jsx("button", {
+    onClick: hanlderGotoPage(paginationState.prev),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 12
+      lineNumber: 21
     },
     __self: undefined
-  }, "@Guamadev"));
+  }, "Prev"), __jsx("span", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 22
+    },
+    __self: undefined
+  }, "@Guamadev"), paginationState.next && __jsx("button", {
+    onClick: hanlderGotoPage(paginationState.next),
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 23
+    },
+    __self: undefined
+  }, "Next"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Footer);
@@ -152,7 +178,7 @@ var _jsxFileName = "/Users/juan.marval/projects/nextjs/rick-and-morty/components
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
-const StyledHeader = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div.withConfig({
+const StyledHeader = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.header.withConfig({
   displayName: "Header__StyledHeader",
   componentId: "favix5-0"
 })(["display:flex;background-color:black;color:#FFFFFF;grid-area:header"]);
@@ -194,7 +220,7 @@ var _jsxFileName = "/Users/juan.marval/projects/nextjs/rick-and-morty/components
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
-const StyledMain = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div.withConfig({
+const StyledMain = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.main.withConfig({
   displayName: "Main__StyledMain",
   componentId: "r0i4ck-0"
 })(["display:flex;flex-direction:column;background-color:#CCCCCC;grid-area:main"]);
@@ -232,9 +258,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Footer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Footer */ "./components/Layout/Footer.tsx");
 /* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Header */ "./components/Layout/Header.tsx");
 /* harmony import */ var _Main__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Main */ "./components/Layout/Main.tsx");
+/* harmony import */ var _Provider__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Provider */ "./components/Provider/index.tsx");
 var _jsxFileName = "/Users/juan.marval/projects/nextjs/rick-and-morty/components/Layout/index.tsx";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
 
 
 
@@ -248,34 +276,135 @@ const Layout = props => {
   const {
     children
   } = props;
-  return __jsx(StyledLayout, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 21
-    },
-    __self: undefined
-  }, __jsx(_Header__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  return __jsx(_Provider__WEBPACK_IMPORTED_MODULE_5__["default"], {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 22
     },
     __self: undefined
-  }), __jsx(_Main__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  }, __jsx(StyledLayout, {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 23
     },
     __self: undefined
+  }, __jsx(_Header__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 24
+    },
+    __self: undefined
+  }), __jsx(_Main__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 25
+    },
+    __self: undefined
   }, children), __jsx(_Footer__WEBPACK_IMPORTED_MODULE_2__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 26
+      lineNumber: 28
     },
     __self: undefined
-  }));
+  })));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Layout);
+
+/***/ }),
+
+/***/ "./components/Provider/index.tsx":
+/*!***************************************!*\
+  !*** ./components/Provider/index.tsx ***!
+  \***************************************/
+/*! exports provided: Context, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Context", function() { return Context; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "axios");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+var _jsxFileName = "/Users/juan.marval/projects/nextjs/rick-and-morty/components/Provider/index.tsx";
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+const initialState = {
+  paginationState: {
+    count: 0,
+    pages: 0,
+    next: '',
+    prev: ''
+  },
+  characterState: [],
+  setCharacterState: () => {},
+  goToPage: () => {}
+};
+const Context = Object(react__WEBPACK_IMPORTED_MODULE_0__["createContext"])(initialState);
+
+const ProviderComponent = props => {
+  const {
+    children
+  } = props;
+  const {
+    0: state,
+    1: setState
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
+    paginationState: initialState.paginationState,
+    characterState: initialState.characterState
+  });
+
+  const setCharacterState = ({
+    info,
+    results
+  }) => {
+    setState(_objectSpread({}, state, {
+      paginationState: info,
+      characterState: results
+    }));
+  };
+
+  const goToPage = async url => {
+    try {
+      const {
+        data
+      } = await axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url);
+      setCharacterState(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const {
+    characterState,
+    paginationState
+  } = state;
+  return __jsx(Context.Provider, {
+    value: {
+      paginationState,
+      characterState,
+      setCharacterState,
+      goToPage
+    },
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 48
+    },
+    __self: undefined
+  }, children);
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (ProviderComponent);
 
 /***/ }),
 
@@ -332,6 +461,17 @@ const App = props => {
 
 module.exports = __webpack_require__(/*! private-next-pages/_app.tsx */"./pages/_app.tsx");
 
+
+/***/ }),
+
+/***/ "axios":
+/*!************************!*\
+  !*** external "axios" ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("axios");
 
 /***/ }),
 
