@@ -1,0 +1,1 @@
+{"ast":null,"code":"export { default as API } from './constants/api';","map":{"version":3,"sources":["/Users/juan.marval/projects/nextjs/rick-and-morty/commons/index.ts"],"names":["default","API"],"mappings":"AACA,SAASA,OAAO,IAAIC,GAApB,QAA+B,iBAA/B","sourcesContent":["\nexport { default as API } from './constants/api'"]},"metadata":{},"sourceType":"module"}
