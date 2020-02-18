@@ -9,16 +9,33 @@
 		"eslint.nodePath": "node_modules/eslint/bin",
 		"eslint.run": "onType",
 		"eslint.alwaysShowStatus": true,
-    "prettier.tabWidth": 2,
-    "prettier.singleQuote": true,
+		"prettier.tabWidth": 2,
+		"prettier.singleQuote": true,
+		"editor.tabSize": 2,
 		"eslint.validate": [
 			"javascript",
 			"javascriptreact",
-			"typescript"
+			"react"
 		],
 		"eslint.options": {
 		"extensinons": [".ts", ".js", ".tsx", ".jsx"]
-		}
+		},
+		"workbench.colorCustomizations": {
+			"activityBar.background": "#4491da",
+			"activityBar.activeBorder": "#a02061",
+			"activityBar.foreground": "#15202b",
+			"activityBar.inactiveForeground": "#15202b99",
+			"activityBarBadge.background": "#a02061",
+			"activityBarBadge.foreground": "#e7e7e7",
+			"titleBar.activeBackground": "#2778c4",
+			"titleBar.inactiveBackground": "#2778c499",
+			"titleBar.activeForeground": "#e7e7e7",
+			"titleBar.inactiveForeground": "#e7e7e799",
+			"statusBar.background": "#2778c4",
+			"statusBarItem.hoverBackground": "#4491da",
+			"statusBar.foreground": "#e7e7e7"
+		},
+		"peacock.color": "#2778c4"
 	}
 
 }

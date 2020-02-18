@@ -5,7 +5,8 @@ const StyledMain = styled.main`
   display: flex;
   flex-direction: column;
   background-color: #CCCCCC;
-  grid-area: main
+  grid-area: main;
+  overflow: auto;
 `
 
 const Main = (props: PropsWithChildren<{}>) => {
