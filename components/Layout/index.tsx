@@ -1,4 +1,4 @@
-import { PropsWithChildren } from 'react'
+import { PropsWithChildren, memo } from 'react'
 import styled from 'styled-components'
 
 import Footer from './Footer'
@@ -43,4 +43,4 @@ const Layout = (props: PropsWithChildren<{}>) => {
     )
 }
 
-export default Layout
+export default memo(Layout)

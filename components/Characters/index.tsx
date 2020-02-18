@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import styled from 'styled-components'
 
 import { Character } from '../../pages/api/character'
@@ -5,6 +6,8 @@ import { Character } from '../../pages/api/character'
 const StyledCharacterContainer = styled.div`
   display:flex;
   justify-content: center;
+  padding: 16px;
+  box-shadow: inset 1px 1px 2px 4px #FFFFFF;
 `
 
 const StyledCharacterImg = styled.img`
@@ -35,4 +38,4 @@ const Characters = (props: CharactersProps) => {
   )
 }
 
-export default Characters
+export default memo(Characters)

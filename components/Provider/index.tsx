@@ -1,4 +1,4 @@
-import { createContext, PropsWithChildren, useState } from 'react'
+import { createContext, PropsWithChildren, useState, memo } from 'react'
 import { ListInfo, Character, CharactersList } from '../../pages/api/character'
 import axios from 'axios'
 import { API } from '../../commons'
@@ -56,4 +56,4 @@ const ProviderComponent = (props: PropsWithChildren<{}>) => {
   )
 }
 
-export default ProviderComponent
+export default memo(ProviderComponent)

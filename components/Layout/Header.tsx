@@ -1,4 +1,7 @@
+import { memo } from 'react'
 import styled from 'styled-components'
+
+import Search from '../Search'
 
 const StyledHeader = styled.header`
   display: grid;
@@ -27,10 +30,10 @@ const Header = () => {
   return (
     <StyledHeader>
       <StyleLogo>The rick and morty app</StyleLogo>
-      <StyledSearch>Search bar</StyledSearch>
+      <StyledSearch><Search /></StyledSearch>
       <StyledFilter>Filter</StyledFilter>
     </StyledHeader>
   )
 }
 
-export default Header
+export default memo(Header)

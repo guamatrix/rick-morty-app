@@ -1,4 +1,4 @@
-import { FC, PropsWithChildren } from 'react'
+import { FC, PropsWithChildren, memo } from 'react'
 import styled from 'styled-components'
 
 const StyledMain = styled.main`
@@ -18,4 +18,4 @@ const Main = (props: PropsWithChildren<{}>) => {
   )
 }
 
-export default Main
+export default memo(Main)

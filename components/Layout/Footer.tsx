@@ -1,18 +1,25 @@
-import { useContext } from 'react'
+import { useContext, memo } from 'react'
 import styled from 'styled-components'
 import { Context } from '../Provider'
 
 const StyledFooter = styled.footer`
-  display: flex;
+  display: grid;
   background-color: gray;
   grid-area: footer;
   justify-content: space-between;
   align-items: center;
+  grid-template-columns: 0.8fr 0.2fr;
+  
+  div {
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
 `
 
 const StyledButtonPage = styled.button`
-  height: 100%;
   width 60px;
+  height: inherit;
 `
 
 const Footer = () => {
@@ -24,11 +31,13 @@ const Footer = () => {
 
   return (
     <StyledFooter>
-      { paginationState.prev && <StyledButtonPage onClick={hanlderGotoPage(paginationState.prev)}>Prev</StyledButtonPage>}
-        <span>@Guamadev</span>
-      {paginationState.next && <StyledButtonPage onClick={hanlderGotoPage(paginationState.next)}>Next</StyledButtonPage>}
+      <span>@Guamadev</span>
+      <div>
+        { paginationState.prev && <StyledButtonPage onClick={hanlderGotoPage(paginationState.prev)}>Prev</StyledButtonPage> }
+        { paginationState.next && <StyledButtonPage onClick={hanlderGotoPage(paginationState.next)}>Next</StyledButtonPage> }
+      </div>
     </StyledFooter>
   )
 }
 
-export default Footer
+export default memo(Footer)

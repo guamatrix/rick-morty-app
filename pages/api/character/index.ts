@@ -26,9 +26,11 @@ export interface CharactersList {
 }
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  const { query: { page }} = req
+  const { query: { name }} = req
+  console.log(name)
   try {
-    const { data } = await axios.get<AxiosResponse<CharactersList>>(`${API.R_M.characters}?page=${page}`)
+    const filter = name ? `?name=${name}` : ''
+    const { data } = await axios.get<AxiosResponse<CharactersList>>(`${API.R_M.characters}${filter}`)
     res.status(200).send({
       ...data
     })
