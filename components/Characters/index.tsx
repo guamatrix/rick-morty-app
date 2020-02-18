@@ -4,6 +4,7 @@ import { Character } from '../../pages/api/character'
 
 const StyledCharacterContainer = styled.div`
   display:flex;
+  justify-content: center;
 `
 
 const StyledCharacterImg = styled.img`

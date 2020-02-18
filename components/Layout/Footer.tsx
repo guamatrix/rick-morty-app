@@ -7,6 +7,12 @@ const StyledFooter = styled.footer`
   background-color: gray;
   grid-area: footer;
   justify-content: space-between;
+  align-items: center;
+`
+
+const StyledButtonPage = styled.button`
+  height: 100%;
+  width 60px;
 `
 
 const Footer = () => {
@@ -18,9 +24,9 @@ const Footer = () => {
 
   return (
     <StyledFooter>
-      { paginationState.prev && <button onClick={hanlderGotoPage(paginationState.prev)}>Prev</button>}
+      { paginationState.prev && <StyledButtonPage onClick={hanlderGotoPage(paginationState.prev)}>Prev</StyledButtonPage>}
         <span>@Guamadev</span>
-      {paginationState.next && <button onClick={hanlderGotoPage(paginationState.next)}>Next</button>}
+      {paginationState.next && <StyledButtonPage onClick={hanlderGotoPage(paginationState.next)}>Next</StyledButtonPage>}
     </StyledFooter>
   )
 }

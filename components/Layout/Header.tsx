@@ -7,7 +7,8 @@ const StyledHeader = styled.header`
   grid-template-columns: 0.2fr 0.5fr;
   background-color: black;
   color: #FFFFFF;
-  grid-area: header
+  grid-area: header;
+  align-items: center;
 `
 
 const StyleLogo = styled.span`
